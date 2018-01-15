@@ -1,10 +1,10 @@
 html
 	head
 	body
-		h1 Hi %recipient.firstName%,
-		p.text-larger An enquiry was just submitted to #{brand}:
+		h1 Hola %recipient.firstName%,
+		p.text-larger Una consulta acaba de ser enviada para #{brand}:
 		if enquiry.name.full || enquiry.email
-			p.text-larger From
+			p.text-larger De
 				if enquiry.name.full
 					| <strong> #{enquiry.name.full}</strong>
 				if enquiry.name.full && enquiry.email
@@ -14,10 +14,10 @@ html
 				if enquiry.name.full && enquiry.email
 					| )
 		if enquiry.phone
-			p.text-larger Phone: #{enquiry.phone}
+			p.text-larger Teléfono: #{enquiry.phone}
 		if enquiry.enquiryType
 			p.text-larger #{enquiry._.enquiryType.format()}
 		if enquiry.message
 			.text-larger !{enquiry.message.html}
-		p.text-muted Sent #{enquiry._.createdAt.format()}
+		p.text-muted Enviado #{enquiry._.createdAt.format()}
 		p &nbsp;

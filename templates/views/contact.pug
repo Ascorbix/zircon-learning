@@ -1,11 +1,10 @@
 extends ../layouts/default
 
-block intro
-	.container
-		h1 Contact Us
-		
 block content
-	.container
+
+	+primerSeccion('Contacto')
+
+	.container.pt-4
 		if enquirySubmitted
 			h3 Thanks for getting in touch.
 		else

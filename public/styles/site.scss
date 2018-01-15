@@ -3,7 +3,8 @@
 
 // Bootstrap can be removed entirely by deleting this line.
 
-@import "bootstrap/bootstrap";
+@import "bootstrap4/bootstrap.min.css";
+@import "font-awesome/css/font-awesome.min.css";
 
 // The easiest way to customise Bootstrap variables while
 // being able to easily override the source files with new
@@ -20,3 +21,7 @@
 
 // Add your own site style includes here
 @import "site/layout";
+@import "styles.css";
+
+// Font awesome
+

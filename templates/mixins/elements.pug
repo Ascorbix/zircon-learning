@@ -1,0 +1,31 @@
+mixin header()
+    nav.navbar.navbar-expand-lg.navbar-dark.fixed-top
+
+        a.navbar-brand(href='/')
+            .d-inline
+                img(src="/images/icon.png", alt="Logo Zircon", width="13%")
+            .d-inline
+                h4.d-inline.font-weight-light Zircon 
+                h5.d-inline.font-weight-light Learning
+
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navegacionPrincipal" aria-controls="navegacionPrincipal" aria-expanded="false" aria-label="Toggle navigation")
+            span.navbar-toggler-icon
+
+        #navegacionPrincipal.collapse.navbar-collapse.justify-content-end
+            .navbar-nav
+                each link in navLinks
+                    a.nav-item.nav-link(class=(section == link.key ? 'active' : null), href=link.href)= link.label
+
+mixin primerSeccion(titulo)
+    #primeraSeccion.intro
+        .titulo-zircon
+            h1!= titulo 
+            .intro-text-effect.low-spacing!= titulo 
+
+mixin footer()
+    ul.nav.justify-content-center.bg-black
+        each link in navLinks
+            li.nav-item
+                a.nav-link.text-white(class=(section == link.key ? 'active' : null), href=link.href)= link.label
+        .col-12
+            p.text-center.text-white.font-weight-light.menimun Ascorbix® | 2018 

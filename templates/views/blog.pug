@@ -1,40 +1,42 @@
 extends ../layouts/default
 
 mixin post(post)
-	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
-		h2: a(href='/blog/post/' + post.slug)= post.title
-		p.lead.text-muted Posted 
-			if post.publishedDate
-				| on #{post._.publishedDate.format('MMMM Do, YYYY')} 
-			if post.categories && post.categories.length
-				| in 
-				each cat, i in post.categories
-					a(href='/blog/' + cat.key)= cat.name
-					if i < post.categories.length - 1
-						| , 
-					else
-						|  
+	.col-md-6.col.lg-4.col-12.mb-3
+		.card.text-center(data-ks-editable=editable(user, { list: 'Post', id: post.id }), style="height: 700px;")
+			if post.image.exists
+				img.card-img-top(src=post._.image.fit(160,160), width="100%")
 			if post.author
-				| by #{post.author.name.first}
-		if post.image.exists
-			img(src=post._.image.fit(160,160)).img.pull-right
-		p!= post.content.brief
-		if post.content.extended
-			p.read-more: a(href='/blog/post/' + post.slug) Read more...
+				p.text-muted por #{post.author.name.first} #{post.author.name.last}
+			.card-body
 
-block intro
-	.container
-		h1= data.category ? data.category.name : 'Blog'
+				h5.card-title: a(href='/blog/post/' + post.slug)= post.title
+				
+				p.card-text.font-weight-light!= post.content.brief
+				
+				if post.content.extended
+					p.read-more: a(href='/blog/post/' + post.slug) Ver mas...
 
+				a.btn.btn-primary(href='/blog/post/' + post.slug)  Ver curso
+				
+				hr
+
+				if post.categories && post.categories.length
+					p.text-left Aparece en:
+					each cat, i in post.categories
+						a.font-weight-light.badge.badge-primary(href='/blog/' + cat.key)= cat.name
+						
 block content
+
+	+primerSeccion('Cursos')
+
 	.container: .row
 		.col-sm-8.col-md-9
 			if filters.category && !data.category
-				h3.text-muted Invalid Category.
+				h3.text-muted Categoría inexistente.
 			else
 				if data.posts.results.length
 					if data.posts.totalPages > 1
-						h4.text-weight-normal Showing 
+						h4.text-weight-normal Mostrando 
 							strong #{data.posts.first}
 							|  to 
 							strong #{data.posts.last}
@@ -42,8 +44,8 @@ block content
 							strong #{data.posts.total}
 							|  posts.
 					else
-						h4.text-weight-normal Showing #{utils.plural(data.posts.results.length, '* post')}.
-					.blog
+						h4.text-weight-normal Mostrando #{utils.plural(data.posts.results.length, '* post')}.
+					.blog.row
 						each post in data.posts.results
 							+post(post)
 					
@@ -62,14 +64,14 @@ block content
 								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
 				else
 					if data.category
-						h3.text-muted There are no posts in the category #{data.category.name}.
+						h3.text-muted El curso de #{data.category.name} está en proceso.
 					else
-						h3.text-muted There are no posts yet.
+						h3.text-muted No hay ningún post aún.
 		
 		if data.categories.length
-			.col-sm-4.col-md-3
-				h2 Categories
-				.list-group(style='margin-top: 70px;')
-					a(href='/blog', class=!data.category ? 'active' : false).list-group-item All Categories
+			.col-sm-4.col-md-3.position-static
+				h2 Todos los cursos
+				.list-group(style='margin-top: 20px;')
+					a(href='/blog', class=!data.category ? 'active' : false).list-group-item Todos los cursos
 					each cat in data.categories
-						a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
+						a.font-weight-light(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
