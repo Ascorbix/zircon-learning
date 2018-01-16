@@ -2,7 +2,7 @@ extends ../layouts/default
 
 mixin post(post)
 	.col-md-6.col.lg-4.col-12.mb-3
-		.card.text-center(data-ks-editable=editable(user, { list: 'Post', id: post.id }), style="height: 700px;")
+		.card.text-center.mhc(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 			if post.image.exists
 				img.card-img-top(src=post._.image.fit(160,160), width="100%")
 			if post.author
@@ -12,11 +12,8 @@ mixin post(post)
 				h5.card-title: a(href='/blog/post/' + post.slug)= post.title
 				
 				p.card-text.font-weight-light!= post.content.brief
-				
-				if post.content.extended
-					p.read-more: a(href='/blog/post/' + post.slug) Ver mas...
 
-				a.btn.btn-primary(href='/blog/post/' + post.slug)  Ver curso
+				a.btn.btn-primary(href='/blog/post/' + post.slug)  Ver contenido
 				
 				hr
 
@@ -29,7 +26,7 @@ block content
 
 	+primerSeccion('Cursos')
 
-	.container: .row
+	.container.mt-3: .row
 		.col-sm-8.col-md-9
 			if filters.category && !data.category
 				h3.text-muted Categoría inexistente.
