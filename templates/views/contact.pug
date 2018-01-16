@@ -19,7 +19,7 @@ block content
 						input(type='email', name='email', value=formData.email).form-control
 					.form-group
 						label Teléfono
-						input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
+						input(type='text', name='phone', value=formData.phone, placeholder='(Opcional)').form-control
 					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
 						label Razón de contacto
 						select(name='enquiryType').form-control
@@ -28,6 +28,6 @@ block content
 								option(value=type.value, selected=formData.enquiryType == type.value)= type.label
 					.form-group(class=validationErrors.message ? 'has-error' : null)
 						label Mensaje
-						textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
+						textarea(name='message', placeholder='Dejenos su mensaje' rows=4).form-control= formData.message
 					.form-actions
-						button(type='submit').btn.btn-primary Send
+						button(type='submit').btn.btn-primary Enviar
