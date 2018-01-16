@@ -1,6 +1,7 @@
 @import url(bootstrap4/bootstrap.min.css);
 @import url(font-awesome/css/font-awesome.min.css);
 @import url(styles.css);
+@import url(tiphography.css);
 #header {
   margin-top: 30px; }
 
