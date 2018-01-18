@@ -15,7 +15,7 @@ keystone.init({
 
 	'sass': 'public',
 	'static': 'public',
-	'favicon': 'public/favicon.ico',
+	'favicon': 'public/images/icon.png',
 	'views': 'templates/views',
 	'view engine': 'pug',
 	'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/colinstodd-com',
@@ -47,10 +47,10 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	posts: ['posts', 'post-categories'],
-	galleries: 'galleries',
-	enquiries: 'enquiries',
-	users: 'users',
+	Cursos: ['posts', 'post-categories'],
+	Galerías: 'galleries',
+	Consultas: 'enquiries',
+	Usuarios: 'users',
 });
 
 // Start Keystone to connect to your database and initialise the web server

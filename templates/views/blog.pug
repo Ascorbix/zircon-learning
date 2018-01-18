@@ -4,7 +4,7 @@ mixin post(post)
 	.col-md-6.col.lg-4.col-12.mb-3
 		.card.text-center.mhc(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 			if post.image.exists
-				img.card-img-top(src=post._.image.fit(160,160), width="100%")
+				img.card-img-top(src=post._.image, width="100%")
 			if post.author
 				p.text-muted por #{post.author.name.first} #{post.author.name.last}
 			.card-body
@@ -67,8 +67,13 @@ block content
 		
 		if data.categories.length
 			.col-sm-4.col-md-3.position-static
-				h2 Todos los cursos
-				.list-group(style='margin-top: 20px;')
-					a(href='/blog', class=!data.category ? 'active' : false).list-group-item Todos los cursos
-					each cat in data.categories
-						a.font-weight-light(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
+				h3 Cursos disponibles
+				table.table.table-striped
+					tbody
+						tr
+							td.bg-light
+								a.font-weight-light(href='/blog', class=!data.category ? 'active' : false) Todos los cursos
+					each cat in data.categories	
+						tr
+							td
+								a.font-weight-light(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false)= cat.name
