@@ -6,6 +6,19 @@ p{
     text-align: justify;
 }
 
+.btn-primary, .badge-primary {
+    background: #7a51b0;
+    border: #7a51b0;
+}
+    .btn-primary:hover, .badge-primary:hover{
+        background: #452f64;
+        border: #452f64;
+    } 
+
+.text-primary{
+    color: #7a51b0!important;
+}
+
 .mhc{
     min-height: 500px;
     max-height: 700px;
