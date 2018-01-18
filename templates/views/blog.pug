@@ -4,7 +4,7 @@ mixin post(post)
 	.col-md-6.col.lg-4.col-12.mb-3
 		.card.text-center.mhc(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 			if post.image.exists
-				img.card-img-top(src=post._.image, width="100%")
+				img.card-img-top(src=post._.image.fit(), width="100%")
 			if post.author
 				p.text-muted por #{post.author.name.first} #{post.author.name.last}
 			.card-body
