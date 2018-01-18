@@ -6,13 +6,17 @@ p{
     text-align: justify;
 }
 
+.txtsmall{
+    font-size: 0.8em;
+}
+
 .btn-primary, .badge-primary {
-    background: #7a51b0;
-    border: #7a51b0;
+    background: #7a51b0!important;
+    border: #7a51b0!important;
 }
     .btn-primary:hover, .badge-primary:hover{
-        background: #452f64;
-        border: #452f64;
+        background: #452f64!important;
+        border: #452f64!important;
     } 
 
 .text-primary{

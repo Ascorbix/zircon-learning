@@ -16,7 +16,7 @@ mixin post(post)
 				if post.categories && post.categories.length
 					p.text-left Aparece en:
 					each cat, i in post.categories
-						a.font-weight-light.badge.badge-primary(href='/blog/' + cat.key)= cat.name
+						a.font-weight-light.text-primary.txtsmall(href='/blog/' + cat.key)= cat.name
 						
 block content
 
