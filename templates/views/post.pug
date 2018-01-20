@@ -12,7 +12,7 @@ block content
 					else
 						header.mt-3
 							h1.text-center= data.post.title
-							h5.text-center Curso: 
+							h6.text-center Curso: 
 								if data.post.categories && data.post.categories.length 
 									each cat, cat_i in data.post.categories
 										a(href='/blog/' + cat.key)= cat.name
