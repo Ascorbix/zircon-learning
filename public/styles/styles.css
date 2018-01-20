@@ -10,6 +10,10 @@ p{
     font-size: 0.8em;
 }
 
+.mt-4 {
+  margin-top: 5rem !important;
+}
+
 .btn-primary, .badge-primary {
     background: #7a51b0!important;
     border: #7a51b0!important;
