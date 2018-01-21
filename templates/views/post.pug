@@ -24,5 +24,6 @@ block content
 									| por #{data.post.author.name.first} #{data.post.author.name.last}
 						.post.mt-3
 							if data.post.image.exists
-								.image-wrap: img.img-fluid(src=data.post._.image.fit())
+								.text-center
+									img.img-fluid(src=data.post._.image.fit())
 							!= data.post.content.full
