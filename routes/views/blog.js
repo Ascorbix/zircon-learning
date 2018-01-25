@@ -1,7 +1,7 @@
-var keystone = require('keystone');
-var async = require('async');
+const keystone = require('keystone');
+const async = require('async');
 
-exports = module.exports = function (req, res) {
+exports = module.exports = (req, res) => {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
@@ -16,10 +16,10 @@ exports = module.exports = function (req, res) {
 		categories: [],
 	};
 
-	// Load all categories
-	view.on('init', function (next) {
+	// Carga todas los cursos
+	view.on('init', (next) => {
 
-		keystone.list('PostCategory').model.find().sort('name').exec(function (err, results) {
+		keystone.list('PostCategory').model.find().sort('name').exec( (err, results) => {
 
 			if (err || !results.length) {
 				return next(err);
@@ -28,14 +28,14 @@ exports = module.exports = function (req, res) {
 			locals.data.categories = results;
 
 			// Load the counts for each category
-			async.each(locals.data.categories, function (category, next) {
+			async.each(locals.data.categories, (category, next) => {
 
-				keystone.list('Post').model.count().where('categories').in([category.id]).exec(function (err, count) {
+				keystone.list('Post').model.count().where('categories').in([category.id]).exec( (err, count) => {
 					category.postCount = count;
 					next(err);
 				});
 
-			}, function (err) {
+			}, (err) => {
 				next(err);
 			});
 		});
@@ -55,11 +55,11 @@ exports = module.exports = function (req, res) {
 	});
 
 	// Load the posts
-	view.on('init', function (next) {
+	view.on('init', (next) => {
 
 		var q = keystone.list('Post').paginate({
 			page: req.query.page || 1,
-			perPage: 10,
+			perPage: 6,
 			maxPages: 10,
 			filters: {
 				state: 'published',
@@ -72,7 +72,7 @@ exports = module.exports = function (req, res) {
 			q.where('categories').in([locals.data.category]);
 		}
 
-		q.exec(function (err, results) {
+		q.exec( (err, results) => {
 			locals.data.posts = results;
 			next(err);
 		});

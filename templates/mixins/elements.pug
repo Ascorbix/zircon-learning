@@ -17,7 +17,7 @@ mixin header()
                     a.nav-item.nav-link(class=(section == link.key ? 'active' : null), href=link.href)= link.label
 
 mixin primerSeccion(titulo)
-    #primeraSeccion.intro
+    #primeraSeccion.intro.mb-3
         .titulo-zircon
             h1!= titulo 
 

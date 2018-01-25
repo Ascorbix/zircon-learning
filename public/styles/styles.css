@@ -19,8 +19,14 @@ p{
     outline: none !important;
 }
 
-@media (max-width: 608px){
-    
+.page-item.active .page-link{
+    background: #7a51b0!important;
+    border-color: #7a51b0!important;
+    color: white!important;
+}
+
+.page-link{
+    color: #7a51b0!important;
 }
 
 .left {

@@ -29,13 +29,7 @@ block content
 			else
 				if data.posts.results.length
 					if data.posts.totalPages > 1
-						h4.text-weight-normal Mostrando 
-							strong #{data.posts.first}
-							|  to 
-							strong #{data.posts.last}
-							|  of 
-							strong #{data.posts.total}
-							|  posts.
+						h4.text-weight-normal Mostrando todos los posts
 					else
 						h4.text-weight-normal Mostrando #{utils.plural(data.posts.results.length, '* post')}.
 					.blog.row
@@ -43,18 +37,23 @@ block content
 							+post(post)
 					
 					if data.posts.totalPages > 1
-						ul.pagination
-							if data.posts.previous
-								li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
-							else
-								li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
-							each p, i in data.posts.pages
-								li(class=data.posts.currentPage == p ? 'active' : null)
-									a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
-							if data.posts.next
-								li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
-							else
-								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
+						nav.Page.navigation
+							ul.pagination.justify-content-center
+								if data.posts.previous
+									li.page-item
+										a.page-link(href='?page=' + data.posts.previous)
+											i.fa.fa-chevron-left(aria-hidden="true")
+								else
+									li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
+								each p, i in data.posts.pages
+									li.page-item(class=data.posts.currentPage == p ? 'active' : null)
+										a.page-link(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
+								if data.posts.next
+									li.page-item
+										a.page-link(href='?page=' + data.posts.next)
+											i.fa.fa-chevron-right(aria-hidden="true")
+								else
+									li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
 				else
 					if data.category
 						h3.text-muted El curso de #{data.category.name} está en proceso.

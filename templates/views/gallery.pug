@@ -3,7 +3,7 @@ extends ../layouts/default
 block content
 	+primerSeccion('Galería')
 
-	.container
+	.container.mt-4
 		if galleries.length
 			each gallery in galleries
 				h2= gallery.name
