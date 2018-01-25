@@ -72,6 +72,8 @@ exports = module.exports = (req, res) => {
 			q.where('categories').in([locals.data.category]);
 		}
 
+		console.log(q);
+
 		q.exec( (err, results) => {
 			locals.data.posts = results;
 			next(err);
