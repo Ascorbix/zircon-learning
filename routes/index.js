@@ -18,16 +18,16 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-import keystone from 'keystone';
-import middleware from './middleware';
-let importRoutes = keystone.importer(__dirname);
+const keystone = require('keystone');
+const middleware = require('./middleware');
+const importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
-let routes = {
+const routes = {
 	views: importRoutes('./views'),
 };
 
